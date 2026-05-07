@@ -1,0 +1,109 @@
+.container {
+  width: 100%;
+  padding-inline: 20px;
+}
+
+.container__content {
+  width: 100%;
+}
+
+.top {
+  padding-top: 18px;
+  min-height: 100vh;
+}
+
+.top::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-bg-theme);
+  background-image: url("/img/top-bg-texture-mobile.png");
+  background-size: cover;
+  background-position: top 0 left 0;
+  background-repeat: no-repeat;
+  background-blend-mode: color-burn;
+  z-index: -1;
+}
+
+.top::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/img/top-bg-mobile.png");
+  background-size: contain;
+  background-position: bottom 0 left 0;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.top__logo {
+  width: 213px;
+  height: auto;
+}
+
+.top__content {
+  margin-top: 37px;
+}
+
+.top__heading {
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 111%;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  display: flex;
+  flex-direction: column;
+  letter-spacing: 0.03em;
+}
+
+.top__heading > span:nth-child(3) {
+  translate: clamp(1px, 1.8em, 1.8em);
+}
+
+.top__heading > span:nth-child(4) {
+  translate: clamp(1px, 0.86em, 0.86em);
+}
+
+.top__subheading {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 130%;
+  margin-top: 24px;
+  margin-bottom: 32px;
+}
+
+.top__button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.top__button {
+  border-radius: 66px;
+  padding: 14px;
+  border-style: bold;
+  border-width: 1px;
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+}
+
+.top__button_primary {
+  background-color: var(--color-bg-dark);
+  border-color: var(--color-bg-dark);
+  color: var(--color-text-secondary);
+}
+
+.top__button_secondary {
+  background-color: var(--color-bg-light);
+  border-color: var(--color-bg-dark);
+  /* opacity: 0.9; */
+}

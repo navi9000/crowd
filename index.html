@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>Document</title>
+    <style>
+      @font-face {
+        font-family: "Golos Text";
+        src: url("fonts/GolosText-Regular.ttf") format("truetype");
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Golos Text";
+        src: url("fonts/GolosText-Medium.ttf") format("truetype");
+        font-weight: 500;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Golos Text";
+        src: url("fonts/GolosText-SemiBold.ttf") format("truetype");
+        font-weight: 600;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Golos Text";
+        src: url("fonts/GolosText-Bold.ttf") format("truetype");
+        font-weight: 700;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Merriweather";
+        src: url("fonts/Merriweather_24pt-Regular.ttf") format("truetype");
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Montserrat";
+        src: url("fonts/Montserrat-Medium.ttf") format("truetype");
+        font-weight: 500;
+        font-style: normal;
+      }
+
+      :root {
+        --font-family: "Golos Text", sans-serif;
+        --second-family: "Merriweather", sans-serif;
+        --third-family: "Montserrat", sans-serif;
+
+        --color-text-primary: #313131;
+        --color-text-secondary: #fff;
+        --color-bg-dark: #1f1f1f;
+        --color-bg-light: #fff;
+        --color-bg-theme: #e9ded4;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        min-width: 320px;
+        max-width: 100vw;
+        overflow: hidden;
+        font-family: var(--font-family);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="container top">
+        <div class="container__content">
+          <img src="img/logo.png" alt="logo" class="top__logo" />
+          <div class="top__content">
+            <h1 class="top__heading">
+              <span>Превратите </span><span>уездный город </span
+              ><span>в столицу </span><span>земного шара</span>
+            </h1>
+            <p class="top__subheading">
+              Оплатите взнос на телеграммы для организации Международного
+              васюкинского турнира по шахматам
+            </p>
+            <div class="top__button-container">
+              <a class="top__button top__button_primary"
+                >Поддержать шахматную мысль</a
+              ><a class="top__button top__button_secondary"
+                >Подробнее о турнире</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
