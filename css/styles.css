@@ -231,3 +231,74 @@
   text-decoration-color: var(--color-text-alert);
   margin-right: 8px;
 }
+
+.stages {
+  padding-top: 122px;
+}
+
+.stages__heading {
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 110%;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  letter-spacing: 0.02em;
+  position: relative;
+}
+
+.stages__heading::after {
+  content: "Будущие источники обогащения васюкинцев";
+  position: absolute;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 120%;
+  color: var(--color-text-highlight);
+  left: 0;
+  bottom: -55px;
+  text-transform: initial;
+  letter-spacing: 0;
+}
+
+.stages__list-container {
+  height: 364px;
+  width: 100%;
+  background-color: black;
+  margin-top: 204px;
+}
+
+.participants {
+  padding-top: 121px;
+  padding-bottom: 99px;
+}
+
+.participants__heading {
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 110%;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+}
+
+.participants__list-container {
+  margin-top: 40px;
+  height: 464px;
+  width: 100%;
+  background-color: black;
+}
+
+.footer {
+  padding-block: 78px;
+  background-color: var(--color-bg-theme);
+}
+
+.footer__text {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 120%;
+  color: var(--color-text-primary);
+  opacity: 0.6;
+}
