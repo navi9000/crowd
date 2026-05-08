@@ -16,7 +16,7 @@ class Screen {
     this.#query.notify({ isLargeScreen: this.#isLargeScreen })
     window.addEventListener("resize", (e) => {
       const newValue = this.#getIsLargeScreen(e.target.screen.width)
-      if (newValue !== isLargeScreen) {
+      if (newValue !== this.#isLargeScreen) {
         this.#isLargeScreen = newValue
         this.#query.notify({ isLargeScreen: this.#isLargeScreen })
       }
