@@ -1,6 +1,7 @@
 import Factory from "../factory.js"
 import Templates from "../templates.js"
 import { qs } from "../utils/dom.js"
+import { populate } from "../utils/templates.js"
 
 class ParticipantFactory extends Factory {
   #$container = qs(".participants__list-container")
@@ -10,10 +11,11 @@ class ParticipantFactory extends Factory {
   }
 
   renderMobile() {
-    this.#$container.innerHTML = Templates.ParticipantItem()
-      .replace("{{src}}", "img/participant-placeholder.png")
-      .replace("{{name}}", "Хозе-Рауль Капабланка")
-      .replace("{{description}}", "Чемпион мира по шахматам")
+    this.#$container.innerHTML = populate(Templates.ParticipantItem(), {
+      src: "img/participant-placeholder.png",
+      name: "Хозе-Рауль Капабланка",
+      description: "Чемпион мира по шахматам",
+    })
   }
 }
 
