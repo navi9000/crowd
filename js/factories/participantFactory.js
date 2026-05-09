@@ -1,4 +1,5 @@
 import Factory from "../factory.js"
+import Templates from "../templates.js"
 import { qs } from "../utils/dom.js"
 
 class ParticipantFactory extends Factory {
@@ -9,7 +10,10 @@ class ParticipantFactory extends Factory {
   }
 
   renderMobile() {
-    this.#$container.innerHTML = "Малый экран"
+    this.#$container.innerHTML = Templates.ParticipantItem()
+      .replace("{{src}}", "img/participant-placeholder.png")
+      .replace("{{name}}", "Хозе-Рауль Капабланка")
+      .replace("{{description}}", "Чемпион мира по шахматам")
   }
 }
 
