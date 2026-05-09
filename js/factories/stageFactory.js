@@ -1,3 +1,4 @@
+import { stageList } from "../data.js"
 import Factory from "../factory.js"
 import Templates from "../templates.js"
 import { qs } from "../utils/dom.js"
@@ -5,23 +6,22 @@ import { populate, populateList } from "../utils/templates.js"
 
 class StageFactory extends Factory {
   #$container = qs(".stages__list-container")
+  #stageList = stageList.map((text, index) =>
+    populate(Templates.StageItem(), {
+      counter: `${index + 1}`,
+      text,
+    }),
+  )
 
   renderDesktop() {
-    this.#$container.innerHTML = "Большой экран"
+    this.#$container.innerHTML = this.#stageList
+      .map((item) => populateList(Templates.StageCard(), { items: [item] }))
+      .join("")
   }
 
   renderMobile() {
     this.#$container.innerHTML = populateList(Templates.StageCard(), {
-      items: [
-        populate(Templates.StageItem(), {
-          counter: "1",
-          text: "Строительство железнодорожной магистрали Москва-Васюки",
-        }),
-        populate(Templates.StageItem(), {
-          counter: "2",
-          text: "Открытие фешенебельной гостиницы «Проходная пешка» и других небоскрёбов",
-        }),
-      ],
+      items: [this.#stageList[0], this.#stageList[1]],
     })
   }
 }
