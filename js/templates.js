@@ -13,6 +13,19 @@ class Templates {
         <a class="participant__button">Подробнее</a>
     </article>`
   }
+
+  static StageItem() {
+    return `<div class="stage-item">
+        <div class="stage-item__counter">{{counter}}</div>
+        <div class="stage-item__text">{{text}}</div>
+    </div>`
+  }
+
+  static StageCard() {
+    return `<div class="stage-card">
+        <div class="stage-card__content">{{items}}</div>
+    </div>`
+  }
 }
 
 export default Templates

@@ -85,7 +85,6 @@
   font-size: clamp(1px, 9.7vw, 9.7vw);
   line-height: 111%;
   text-transform: uppercase;
-  color: var(--color-text-primary);
   letter-spacing: 0.03em;
   display: grid;
   grid-template-columns: 1fr;
@@ -159,7 +158,6 @@
   font-size: 28px;
   line-height: 136%;
   text-transform: uppercase;
-  color: var(--color-text-primary);
 }
 
 .introduction__heading_flex {
@@ -189,7 +187,6 @@
 }
 
 .introduction__queries {
-  font-family: var(--font-family);
   font-weight: 400;
   font-size: 18px;
   line-height: 120%;
@@ -205,10 +202,8 @@
 .table__item {
   display: flex;
   flex-wrap: wrap;
-  font-family: var(--font-family);
   font-size: 20px;
   line-height: 177%;
-  color: var(--color-text-primary);
   padding-block: 10px;
 }
 
@@ -241,7 +236,6 @@
   font-size: 36px;
   line-height: 110%;
   text-transform: uppercase;
-  color: var(--color-text-primary);
   letter-spacing: 0.02em;
   position: relative;
 }
@@ -277,7 +271,6 @@
   font-size: 36px;
   line-height: 110%;
   text-transform: uppercase;
-  color: var(--color-text-primary);
 }
 
 .participants__list-container {
@@ -292,11 +285,9 @@
 }
 
 .footer__text {
-  font-family: var(--font-family);
   font-weight: 400;
   font-size: 16px;
   line-height: 120%;
-  color: var(--color-text-primary);
   opacity: 0.6;
 }
 
@@ -316,21 +307,17 @@
 }
 
 .participant__name {
-  font-family: var(--font-family);
   font-weight: 600;
   font-size: 24px;
   line-height: 120%;
-  color: var(--color-text-primary);
   margin-top: 26px;
   margin-bottom: 8px;
 }
 
 .participant__description {
-  font-family: var(--font-family);
   font-weight: 400;
   font-size: 20px;
   line-height: 120%;
-  color: var(--color-text-primary);
   opacity: 0.6;
 }
 
@@ -338,7 +325,6 @@
   border: 1px solid var(--color-text-highlight);
   border-radius: 62px;
   padding: 6px 12px;
-  font-family: var(--font-family);
   font-weight: 500;
   font-size: 16px;
   line-height: 127%;
@@ -350,4 +336,44 @@
 .participant__button:hover {
   background-color: var(--color-text-highlight);
   color: var(--color-text-secondary);
+}
+
+.stage-item {
+  display: flex;
+  gap: 16px;
+}
+
+.stage-item__counter {
+  border-radius: 60px;
+  width: 36px;
+  height: 36px;
+  background-color: var(--color-bg-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 120%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.stage-item__text {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 120%;
+}
+
+.stage-card {
+  background: var(--color-bg-theme);
+  background-image: url("/img/top-bg-texture-mobile.png");
+  background-blend-mode: color-burn;
+  padding: 62px 20px 0;
+  height: 300px;
+}
+
+.stage-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
 }
