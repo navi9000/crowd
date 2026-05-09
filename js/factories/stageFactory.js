@@ -1,17 +1,15 @@
 import Factory from "../factory.js"
+import { qs } from "../utils/dom.js"
 
 class StageFactory extends Factory {
-  /**
-   *
-   * @param {{isLargeScreen: boolean}} param0
-   */
-  render({ isLargeScreen }) {
-    const el = document.querySelector(".stages__list-container")
-    if (isLargeScreen) {
-      el.innerHTML = "Большой экран"
-    } else {
-      el.innerHTML = "Малый экран"
-    }
+  #$container = qs(".stages__list-container")
+
+  renderDesktop() {
+    this.#$container.innerHTML = "Большой экран"
+  }
+
+  renderMobile() {
+    this.#$container.innerHTML = "Малый экран"
   }
 }
 

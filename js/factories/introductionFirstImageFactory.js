@@ -1,26 +1,19 @@
 import Factory from "../factory.js"
 import Templates from "../templates.js"
+import { qs } from "../utils/dom.js"
 
 class IntroductionFirstImageFactory extends Factory {
-  /**
-   *
-   * @param {{isLargeScreen: boolean}} param0
-   */
-  render({ isLargeScreen }) {
-    const desktopContainer = document.querySelector(
-      ".introduction__first-image-container_desktop",
-    )
-    const mobileContainer = document.querySelector(
-      ".introduction__first-image-container_mobile",
-    )
+  #$desktopContainer = qs(".introduction__first-image-container_desktop")
+  #$mobileContainer = qs(".introduction__first-image-container_mobile")
 
-    if (isLargeScreen) {
-      mobileContainer.innerHTML = ""
-      desktopContainer.innerHTML = Templates.IntroductionFirstImage()
-    } else {
-      desktopContainer.innerHTML = ""
-      mobileContainer.innerHTML = Templates.IntroductionFirstImage()
-    }
+  renderDesktop() {
+    this.#$mobileContainer.innerHTML = ""
+    this.#$desktopContainer.innerHTML = Templates.IntroductionFirstImage()
+  }
+
+  renderMobile() {
+    this.#$desktopContainer.innerHTML = ""
+    this.#$mobileContainer.innerHTML = Templates.IntroductionFirstImage()
   }
 }
 

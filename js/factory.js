@@ -4,10 +4,16 @@ class Factory {
    * @param {import ("./query.js").default} query
    */
   constructor(query) {
-    query.add(this.render)
+    query.add(this.#render.bind(this))
   }
 
-  render(params) {}
+  #render({ isLargeScreen }) {
+    isLargeScreen ? this.renderDesktop() : this.renderMobile()
+  }
+
+  renderMobile() {}
+
+  renderDesktop() {}
 }
 
 export default Factory
