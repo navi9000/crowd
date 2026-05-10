@@ -420,6 +420,7 @@
   padding-bottom: 99px;
   @media (min-width: 768px) {
     padding-top: 204px;
+    padding-bottom: 138px;
   }
 }
 
@@ -440,12 +441,17 @@
   width: 100%;
   @media (min-width: 768px) {
     margin-top: 62px;
+    display: flex;
+    gap: 18px;
   }
 }
 
 .footer {
   padding-block: 78px;
   background-color: var(--color-bg-theme);
+  @media (min-width: 768px) {
+    padding-block: 100px;
+  }
 }
 
 .footer__text {
@@ -464,6 +470,9 @@
 .participant__img-container {
   padding-inline: 46px;
   width: 100%;
+  @media (min-width: 768px) {
+    padding-inline: 38px;
+  }
 }
 
 .participant__img {
