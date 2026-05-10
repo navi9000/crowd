@@ -306,10 +306,6 @@
   }
 }
 
-.table__item:first-child {
-  /* line-height: 177%; */
-}
-
 .table__item:not(:last-child) {
   border-bottom: 1px solid var(--color-bg-placeholder);
 }
@@ -339,6 +335,9 @@
 
 .stages {
   padding-top: 122px;
+  @media (min-width: 768px) {
+    padding-top: 202px;
+  }
 }
 
 .stages__heading {
@@ -349,6 +348,11 @@
   text-transform: uppercase;
   letter-spacing: 0.02em;
   position: relative;
+  @media (min-width: 768px) {
+    font-size: 54px;
+    max-width: 806px;
+    line-height: 118%;
+  }
 }
 
 .stages__heading::after {
@@ -363,6 +367,14 @@
   bottom: -55px;
   text-transform: initial;
   letter-spacing: 0;
+  @media (min-width: 768px) {
+    font-size: 20px;
+    bottom: auto;
+    left: auto;
+    right: 225px;
+    top: 71px;
+    max-width: 280px;
+  }
 }
 
 .stages__list-container {
@@ -376,6 +388,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+    margin-top: 54px;
   }
 }
 
@@ -405,6 +418,9 @@
 .participants {
   padding-top: 121px;
   padding-bottom: 99px;
+  @media (min-width: 768px) {
+    padding-top: 204px;
+  }
 }
 
 .participants__heading {
@@ -413,12 +429,18 @@
   font-size: 36px;
   line-height: 110%;
   text-transform: uppercase;
+  @media (min-width: 768px) {
+    font-size: 54px;
+  }
 }
 
 .participants__list-container {
   margin-top: 40px;
   height: 464px;
   width: 100%;
+  @media (min-width: 768px) {
+    margin-top: 62px;
+  }
 }
 
 .footer {
@@ -504,6 +526,9 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 120%;
+  @media (min-width: 768px) {
+    font-size: 20px;
+  }
 }
 
 .stage-card {
