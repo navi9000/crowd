@@ -152,6 +152,10 @@
   padding-top: 48px;
 }
 
+.introduction__top {
+  margin-bottom: 38px;
+}
+
 .introduction__heading {
   font-family: var(--second-family);
   font-weight: 400;
@@ -189,24 +193,23 @@
 }
 
 .introduction__second-image-container {
-  mask-image: url("/img/collage_bg.png");
+  margin-top: 55px;
+  mask-image: url("/img/collage.png");
   mask-size: 100%;
-  position: relative;
-  margin-top: 52px;
+  scale: 1.12;
 }
 
-.introduction__collage-bg {
-  width: 100%;
-  background-image: url("/img/top-bg-texture-mobile.png");
+.introduction__collage {
+  background-image:
+    url("/img/top-bg-texture-mobile.png"), url("/img/collage.png");
   background-blend-mode: color-burn;
+  background-size: auto, 100%;
+  background-repeat: repeat, no-repeat;
+  aspect-ratio: 1058 / 1135;
 }
 
-.introduction__player-img {
-  position: absolute;
-  top: 17.25%;
-  left: 15.8%;
-  width: 71.4%;
-  aspect-ratio: 678 / 681;
+.introduction__bottom {
+  margin-top: 45px;
 }
 
 .introduction__table {
@@ -302,11 +305,11 @@
   pointer-events: none;
   background-image: url("/img/plane.png");
   background-size: contain;
-  width: 317px;
+  width: 335px;
   aspect-ratio: 1.7;
-  top: -114px;
+  top: -132px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-47%) rotate(-3deg);
   z-index: 1;
 
   @media (min-width: 768px) {
