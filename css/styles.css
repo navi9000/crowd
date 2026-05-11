@@ -604,7 +604,7 @@
 
 .slider__slides {
   display: grid;
-  /* transform: translateX(-40%); */
+  transition: 300ms;
 }
 
 .slider__slide {

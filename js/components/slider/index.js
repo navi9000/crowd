@@ -9,7 +9,7 @@
 
  */
 
-import { qs } from "../../utils/dom.js"
+import { delegate, qs } from "../../utils/dom.js"
 import { populate } from "../../utils/templates.js"
 import {
   NAVIGATION_TEMPLATE,
@@ -18,6 +18,7 @@ import {
 } from "./ui.js"
 
 class Slider {
+  #parentSelector
   #parentElement
   #slideList
   #slidesPerView
@@ -37,6 +38,7 @@ class Slider {
     autorepeat = false,
     firstElementIndex = 0,
   }) {
+    this.#parentSelector = parentSelector
     this.#parentElement = qs(parentSelector)
     this.#slideList = slideList
     this.#slidesPerView = slidesPerView
@@ -55,9 +57,41 @@ class Slider {
       gap: ${this.#slideGap}px`,
       navigation: populate(NAVIGATION_TEMPLATE, { result: "hi" }),
     })
+
+    delegate(
+      this.#parentElement,
+      ".navigation__button_next",
+      "click",
+      this.nextSlide.bind(this),
+    )
+
+    delegate(
+      this.#parentElement,
+      ".navigation__button_prev",
+      "click",
+      this.prevSlide.bind(this),
+    )
   }
 
   unmount() {}
+
+  prevSlide() {
+    this.#currentIndex = this.#currentIndex - 1
+    const $slides = qs(`${this.#parentSelector} .slider__slides`)
+
+    $slides.style.transform = `translateX(calc(${this.#calculatePosition()}))`
+  }
+
+  nextSlide() {
+    this.#currentIndex = this.#currentIndex + 1
+    const $slides = qs(`${this.#parentSelector} .slider__slides`)
+
+    $slides.style.transform = `translateX(calc(${this.#calculatePosition()}))`
+  }
+
+  #calculatePosition() {
+    return `(${(-100 / this.#slideList.length) * this.#currentIndex}%) - (${(this.#slideGap / this.#slideList.length) * this.#currentIndex}px)`
+  }
 }
 
 export default Slider
