@@ -46,8 +46,8 @@ class Slider {
   }) {
     this.#parentSelector = parentSelector
     this.#parentElement = qs(parentSelector)
-    this.#prevButtonSelector = `${this.#parentSelector} .navigation__button_prev`
-    this.#nextButtonSelector = `${this.#parentSelector} .navigation__button_next`
+    this.#prevButtonSelector = ".navigation__button_prev"
+    this.#nextButtonSelector = ".navigation__button_next"
     this.#slideList = slideList
     this.#length = this.#slideList.length
     this.#slidesPerView = slidesPerView
@@ -70,14 +70,14 @@ class Slider {
 
     delegate(
       this.#parentElement,
-      ".navigation__button_next",
+      this.#nextButtonSelector,
       "click",
       this.nextSlide.bind(this),
     )
 
     delegate(
       this.#parentElement,
-      ".navigation__button_prev",
+      this.#prevButtonSelector,
       "click",
       this.prevSlide.bind(this),
     )
@@ -132,7 +132,9 @@ class Slider {
    * @param {string} selector
    */
   #enableNavButton(selector) {
-    qs(selector).classList.remove("navigation__button_disabled")
+    qs(`${this.#parentSelector} ${selector}`).classList.remove(
+      "navigation__button_disabled",
+    )
   }
 
   /**
@@ -140,7 +142,9 @@ class Slider {
    * @param {string} selector
    */
   #disableNavButton(selector) {
-    qs(selector).classList.add("navigation__button_disabled")
+    qs(`${this.#parentSelector} ${selector}`).classList.add(
+      "navigation__button_disabled",
+    )
   }
 }
 
