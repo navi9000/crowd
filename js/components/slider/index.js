@@ -4,7 +4,8 @@
  * @property {[string]} slideList
  * @property {number=} slidesPerView
  * @property {number=} slideGap
- * @property {boolean=} 
+ * @property {boolean=} autorepeat
+ * @property {boolean=} loop
  * @property {number=} firstElementIndex
 
  */
@@ -24,6 +25,7 @@ class Slider {
   #slidesPerView
   #slideGap
   #autorepeat
+  #loop
   #currentIndex
 
   /**
@@ -36,6 +38,7 @@ class Slider {
     slidesPerView = 1,
     slideGap = 0,
     autorepeat = false,
+    loop = false,
     firstElementIndex = 0,
   }) {
     this.#parentSelector = parentSelector
@@ -44,6 +47,7 @@ class Slider {
     this.#slidesPerView = slidesPerView
     this.#slideGap = slideGap
     this.#autorepeat = autorepeat
+    this.#loop = loop
     this.#currentIndex = firstElementIndex
   }
 
@@ -71,6 +75,18 @@ class Slider {
       "click",
       this.prevSlide.bind(this),
     )
+
+    if (!this.#loop && this.#currentIndex === 0) {
+      qs(`${this.#parentSelector} .navigation__button_prev`).classList.add(
+        "navigation__button_disabled",
+      )
+    }
+
+    if (!this.#loop && this.#currentIndex === this.#slideList.length - 1) {
+      qs(`${this.#parentSelector} .navigation__button_next`).classList.add(
+        "navigation__button_disabled",
+      )
+    }
   }
 
   unmount() {}
@@ -80,6 +96,15 @@ class Slider {
     const $slides = qs(`${this.#parentSelector} .slider__slides`)
 
     $slides.style.transform = `translateX(calc(${this.#calculatePosition()}))`
+
+    qs(`${this.#parentSelector} .navigation__button_next`).classList.remove(
+      "navigation__button_disabled",
+    )
+    if (!this.#loop && this.#currentIndex === 0) {
+      qs(`${this.#parentSelector} .navigation__button_prev`).classList.add(
+        "navigation__button_disabled",
+      )
+    }
   }
 
   nextSlide() {
@@ -87,6 +112,15 @@ class Slider {
     const $slides = qs(`${this.#parentSelector} .slider__slides`)
 
     $slides.style.transform = `translateX(calc(${this.#calculatePosition()}))`
+
+    qs(`${this.#parentSelector} .navigation__button_prev`).classList.remove(
+      "navigation__button_disabled",
+    )
+    if (!this.#loop && this.#currentIndex === this.#slideList.length - 1) {
+      qs(`${this.#parentSelector} .navigation__button_next`).classList.add(
+        "navigation__button_disabled",
+      )
+    }
   }
 
   #calculatePosition() {
