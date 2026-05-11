@@ -14,6 +14,7 @@ import { delegate, qs } from "../../utils/dom.js"
 import { populate } from "../../utils/templates.js"
 import {
   NAVIGATION_TEMPLATE,
+  NAVIGATION_VALUE_NUMERICAL,
   SLIDER_SLIDE_TEMPLATE,
   SLIDER_TEMPLATE,
 } from "./ui.js"
@@ -23,6 +24,7 @@ class Slider {
   #parentElement
   #prevButtonSelector
   #nextButtonSelector
+  #valueSelector
   #slideList
   #length
   #slidesPerView
@@ -50,6 +52,7 @@ class Slider {
     this.#parentElement = qs(parentSelector)
     this.#prevButtonSelector = ".navigation__button_prev"
     this.#nextButtonSelector = ".navigation__button_next"
+    this.#valueSelector = ".navigation__value"
     this.#slideList = slideList
     this.#length = this.#slideList.length
     this.#slidesPerView = slidesPerView
@@ -67,7 +70,12 @@ class Slider {
       wrapperStyles: `width: calc(${(100 * this.#length) / this.#slidesPerView}% + ${this.#slideGap * (this.#length - 1)}px);
       grid-template-columns: repeat(${this.#length}, minmax(0, 1fr));
       gap: ${this.#slideGap}px`,
-      navigation: populate(NAVIGATION_TEMPLATE, { result: "hi" }),
+      navigation: populate(NAVIGATION_TEMPLATE, {
+        result: populate(NAVIGATION_VALUE_NUMERICAL, {
+          value: (this.#currentIndex + 1).toString(),
+          total: this.#length.toString(),
+        }),
+      }),
     })
 
     this.#eventListeners.push(
@@ -129,6 +137,7 @@ class Slider {
   #firstSlide() {
     this.#currentIndex = 0
     this.#reposition()
+    this.#repaintValue()
 
     if (!this.#loop) {
       this.#disableNavButton(this.#prevButtonSelector)
@@ -148,6 +157,7 @@ class Slider {
   #prevSlide() {
     this.#currentIndex = this.#currentIndex - 1
     this.#reposition()
+    this.#repaintValue()
 
     this.#enableNavButton(this.#nextButtonSelector)
     if (!this.#loop && this.#isFirst) {
@@ -163,6 +173,7 @@ class Slider {
   #nextSlide() {
     this.#currentIndex = this.#currentIndex + 1
     this.#reposition()
+    this.#repaintValue()
 
     this.#enableNavButton(this.#prevButtonSelector)
     if (!this.#loop && this.#isLast) {
@@ -173,6 +184,11 @@ class Slider {
       this.#stopAutoplay()
       this.#launchAutoplay()
     }
+  }
+
+  #repaintValue() {
+    qs(`${this.#parentSelector} ${this.#valueSelector}`).innerHTML =
+      this.#currentIndex + 1
   }
 
   #reposition() {

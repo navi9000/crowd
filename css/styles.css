@@ -415,6 +415,10 @@
   }
 }
 
+.stages .slider__slides {
+  margin-bottom: 28px;
+}
+
 .participants {
   padding-top: 121px;
   padding-bottom: 99px;
@@ -444,6 +448,10 @@
     display: flex;
     gap: 18px;
   }
+}
+
+.participants .slider__slides {
+  margin-bottom: 40px;
 }
 
 .footer {
@@ -602,6 +610,30 @@
 .navigation__button_disabled {
   pointer-events: none;
   background-color: var(--color-bg-placeholder);
+}
+
+.navigation__arrow {
+  height: 16px;
+  margin-left: 3px;
+}
+
+.navigation__result {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navigation__result_numerical {
+  width: 56px;
+  gap: 2px;
+}
+
+.navigation__slash {
+  opacity: 0.6;
+}
+
+.navigation__total {
+  opacity: 0.6;
 }
 
 .slider {
