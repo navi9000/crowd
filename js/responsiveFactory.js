@@ -1,4 +1,4 @@
-class Factory {
+class ResponsiveFactory {
   /**
    *
    * @param {import ("./query.js").default} query
@@ -16,4 +16,4 @@ class Factory {
   renderDesktop() {}
 }
 
-export default Factory
+export default ResponsiveFactory

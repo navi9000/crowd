@@ -1,13 +1,13 @@
-import { participantList } from "../data.js"
-import Factory from "../factory.js"
-import Templates from "../templates.js"
-import { qs } from "../utils/dom.js"
-import { populate } from "../utils/templates.js"
+import ResponsiveFactory from "../../responsiveFactory.js"
+import { qs } from "../../utils/dom.js"
+import { populate } from "../../utils/templates.js"
+import { participantList } from "./data.js"
+import { participantItemTemplate } from "./ui.js"
 
-class ParticipantFactory extends Factory {
+class Participants extends ResponsiveFactory {
   #$container = qs(".participants__list-container")
   #participantList = participantList.map(({ name, description, src }) =>
-    populate(Templates.ParticipantItem(), {
+    populate(participantItemTemplate, {
       name,
       description,
       src: src ?? "img/participant-placeholder.png",
@@ -27,4 +27,4 @@ class ParticipantFactory extends Factory {
   }
 }
 
-export default ParticipantFactory
+export default Participants

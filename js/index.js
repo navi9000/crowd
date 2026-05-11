@@ -1,13 +1,15 @@
-import IntroductionFirstImageFactory from "./factories/introductionFirstImageFactory.js"
-import ParticipantFactory from "./factories/participantFactory.js"
-import StageFactory from "./factories/stageFactory.js"
+import {
+  IntroductionFirstImage,
+  Participants,
+  Stages,
+} from "./components/index.js"
 import query from "./query.js"
 import Screen from "./screen.js"
 
 function run() {
-  new StageFactory(query)
-  new ParticipantFactory(query)
-  new IntroductionFirstImageFactory(query)
+  new Stages(query)
+  new Participants(query)
+  new IntroductionFirstImage(query)
   new Screen(query).launch()
 }
 
