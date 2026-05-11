@@ -1,4 +1,4 @@
-export const participantList = [
+export const PARTICIPANT_LIST = [
   {
     id: 1,
     name: "Хозе-Рауль Капабланка",

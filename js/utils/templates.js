@@ -1,23 +1,15 @@
 /**
  *
  * @param {string} template
- * @param {Record<string, string>} data
+ * @param {Record<string, string | [string]>} data
  */
 export function populate(template, data) {
   return Object.entries(data).reduce(
-    (result, [key, value]) => result.replaceAll(`{{${key}}}`, value),
+    (result, [key, value]) =>
+      result.replaceAll(
+        `{{${key}}}`,
+        typeof value === "string" ? value : value.join(""),
+      ),
     template,
-  )
-}
-
-/**
- *
- * @param {string} template
- * @param {{[key]: value}} data
- */
-export function populateList(template, data) {
-  return template.replace(
-    `{{${Object.keys(data)[0]}}}`,
-    Object.values(data)[0].join(""),
   )
 }

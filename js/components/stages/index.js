@@ -1,13 +1,13 @@
 import ResponsiveFactory from "../../responsiveFactory.js"
 import { qs } from "../../utils/dom.js"
-import { populate, populateList } from "../../utils/templates.js"
-import { stageList } from "./data.js"
-import { stageCardTemplate, stageItemTemplate } from "./ui.js"
+import { populate } from "../../utils/templates.js"
+import { STAGE_LIST } from "./data.js"
+import { STAGE_CARD_TEMPLATE, STAGE_ITEM_TEMPLATE } from "./ui.js"
 
 class Stages extends ResponsiveFactory {
   #$container = qs(".stages__list-container")
-  #stageList = stageList.map((text, index) =>
-    populate(stageItemTemplate, {
+  #stageList = STAGE_LIST.map((text, index) =>
+    populate(STAGE_ITEM_TEMPLATE, {
       counter: `${index + 1}`,
       text,
     }),
@@ -15,12 +15,12 @@ class Stages extends ResponsiveFactory {
 
   renderDesktop() {
     this.#$container.innerHTML = this.#stageList
-      .map((item) => populateList(stageCardTemplate, { items: [item] }))
+      .map((item) => populate(STAGE_CARD_TEMPLATE, { items: item }))
       .join("")
   }
 
   renderMobile() {
-    this.#$container.innerHTML = populateList(stageCardTemplate, {
+    this.#$container.innerHTML = populate(STAGE_CARD_TEMPLATE, {
       items: [this.#stageList[0], this.#stageList[1]],
     })
   }

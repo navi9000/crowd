@@ -1,4 +1,4 @@
-export const participantItemTemplate = `<article class="participant">
+export const PARTICIPANT_TEMPLATE = `<article class="participant">
         <div class="participant__img-container">
             <img src="{{src}}" alt="participant" class="participant__img" />
         </div>

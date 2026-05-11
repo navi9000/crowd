@@ -1,13 +1,13 @@
 import ResponsiveFactory from "../../responsiveFactory.js"
 import { qs } from "../../utils/dom.js"
 import { populate } from "../../utils/templates.js"
-import { participantList } from "./data.js"
-import { participantItemTemplate } from "./ui.js"
+import { PARTICIPANT_LIST } from "./data.js"
+import { PARTICIPANT_TEMPLATE } from "./ui.js"
 
 class Participants extends ResponsiveFactory {
   #$container = qs(".participants__list-container")
-  #participantList = participantList.map(({ name, description, src }) =>
-    populate(participantItemTemplate, {
+  #participantList = PARTICIPANT_LIST.map(({ name, description, src }) =>
+    populate(PARTICIPANT_TEMPLATE, {
       name,
       description,
       src: src ?? "img/participant-placeholder.png",
