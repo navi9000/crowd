@@ -27,7 +27,8 @@ class Participants extends ResponsiveFactory {
     this.#slider = new Slider({
       parentSelector: this.#parentSelector,
       slideList: this.#participantList,
-      slidesPerView: 3,
+      slidesPerView: 4,
+      autoplay: true,
     })
     this.#slider.mount()
   }

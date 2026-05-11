@@ -31,6 +31,7 @@ class Slider {
   #loop
   #currentIndex
   #eventListeners = []
+  #interval
 
   /**
    *
@@ -63,7 +64,7 @@ class Slider {
       content: this.#slideList.map((content) =>
         populate(SLIDER_SLIDE_TEMPLATE, { content }),
       ),
-      wrapperStyles: `width: calc(${100 * this.#length}% + ${this.#slideGap * (this.#length - 1)}px);
+      wrapperStyles: `width: calc(${(100 * this.#length) / this.#slidesPerView}% + ${this.#slideGap * (this.#length - 1)}px);
       grid-template-columns: repeat(${this.#length}, minmax(0, 1fr));
       gap: ${this.#slideGap}px`,
       navigation: populate(NAVIGATION_TEMPLATE, { result: "hi" }),
@@ -74,13 +75,13 @@ class Slider {
         this.#parentElement,
         this.#nextButtonSelector,
         "click",
-        this.nextSlide.bind(this),
+        this.#nextSlide.bind(this),
       ),
       delegate(
         this.#parentElement,
         this.#prevButtonSelector,
         "click",
-        this.prevSlide.bind(this),
+        this.#prevSlide.bind(this),
       ),
     )
 
@@ -91,31 +92,18 @@ class Slider {
     if (!this.#loop && this.#isLast) {
       this.#disableNavButton(this.#nextButtonSelector)
     }
+
+    if (this.#autoplay) {
+      this.#launchAutoplay()
+    }
   }
 
   unmount() {
+    if (this.#autoplay) {
+      this.#stopAutoplay()
+    }
     this.#eventListeners.forEach((kill) => kill())
     this.#parentElement.innerHTML = ""
-  }
-
-  prevSlide() {
-    this.#currentIndex = this.#currentIndex - 1
-    this.#reposition()
-
-    this.#enableNavButton(this.#nextButtonSelector)
-    if (!this.#loop && this.#isFirst) {
-      this.#disableNavButton(this.#prevButtonSelector)
-    }
-  }
-
-  nextSlide() {
-    this.#currentIndex = this.#currentIndex + 1
-    this.#reposition()
-
-    this.#enableNavButton(this.#prevButtonSelector)
-    if (!this.#loop && this.#isLast) {
-      this.#disableNavButton(this.#nextButtonSelector)
-    }
   }
 
   get #isFirst() {
@@ -123,7 +111,68 @@ class Slider {
   }
 
   get #isLast() {
-    return this.#currentIndex === this.#length - 1
+    return this.#currentIndex === this.#length - this.#slidesPerView
+  }
+
+  #launchAutoplay() {
+    this.#interval = setInterval(this.#autoplayCallback.bind(this), 4000)
+  }
+
+  #stopAutoplay() {
+    clearInterval(this.#interval)
+  }
+
+  #autoplayCallback() {
+    this.#isLast ? this.#firstSlide() : this.#nextSlide()
+  }
+
+  #firstSlide() {
+    this.#currentIndex = 0
+    this.#reposition()
+
+    if (!this.#loop) {
+      this.#disableNavButton(this.#prevButtonSelector)
+      this.#enableNavButton(this.#nextButtonSelector)
+    }
+
+    if (!this.#loop && this.#isLast) {
+      this.#disableNavButton(this.#nextButtonSelector)
+    }
+
+    if (this.#autoplay) {
+      this.#stopAutoplay()
+      this.#launchAutoplay()
+    }
+  }
+
+  #prevSlide() {
+    this.#currentIndex = this.#currentIndex - 1
+    this.#reposition()
+
+    this.#enableNavButton(this.#nextButtonSelector)
+    if (!this.#loop && this.#isFirst) {
+      this.#disableNavButton(this.#prevButtonSelector)
+    }
+
+    if (this.#autoplay) {
+      this.#stopAutoplay()
+      this.#launchAutoplay()
+    }
+  }
+
+  #nextSlide() {
+    this.#currentIndex = this.#currentIndex + 1
+    this.#reposition()
+
+    this.#enableNavButton(this.#prevButtonSelector)
+    if (!this.#loop && this.#isLast) {
+      this.#disableNavButton(this.#nextButtonSelector)
+    }
+
+    if (this.#autoplay) {
+      this.#stopAutoplay()
+      this.#launchAutoplay()
+    }
   }
 
   #reposition() {
