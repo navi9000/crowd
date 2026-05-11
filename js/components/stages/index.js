@@ -6,7 +6,7 @@ import { STAGE_CARD_TEMPLATE, STAGE_ITEM_TEMPLATE } from "./ui.js"
 import Slider from "../slider/index.js"
 
 class Stages extends ResponsiveFactory {
-  #parentQuerySelector = ".stages__list-container"
+  #parentSelector = ".stages__list-container"
   #$container = qs(".stages__list-container")
   #stageList = STAGE_LIST.map((text, index) =>
     populate(STAGE_ITEM_TEMPLATE, {
@@ -14,20 +14,24 @@ class Stages extends ResponsiveFactory {
       text,
     }),
   )
+  /**
+   * @type {Slider=}
+   */
+  #slider
 
   renderDesktop() {
-    this.#$container.innerHTML = this.#stageList
+    if (this.#slider) {
+      this.#slider.unmount()
+      this.#slider = undefined
+    }
+    qs(this.#parentSelector).innerHTML = this.#stageList
       .map((item) => populate(STAGE_CARD_TEMPLATE, { items: item }))
       .join("")
   }
 
   renderMobile() {
-    // this.#$container.innerHTML = populate(STAGE_CARD_TEMPLATE, {
-    //   items: [this.#stageList[0], this.#stageList[1]],
-    // })
-
-    const slider = new Slider({
-      parentSelector: this.#parentQuerySelector,
+    this.#slider = new Slider({
+      parentSelector: this.#parentSelector,
       slideList: [
         populate(STAGE_CARD_TEMPLATE, {
           items: [this.#stageList[0], this.#stageList[1]],
@@ -48,7 +52,7 @@ class Stages extends ResponsiveFactory {
       slideGap: 20,
     })
 
-    slider.mount()
+    this.#slider.mount()
   }
 }
 

@@ -10,7 +10,7 @@ export function qs(querySelector, parent = document) {
 /**
  *
  * @param {string} querySelector
- * @param {HTMLElement | Document} target
+ * @param {Window | Document | HTMLElement} target
  */
 export function qsa(querySelector, target = document) {
   return target.querySelectorAll(querySelector)
@@ -18,7 +18,7 @@ export function qsa(querySelector, target = document) {
 
 /**
  *
- * @param {HTMLElement | Document | Window} target
+ * @param {Window | Document | HTMLElement} target
  * @param {string} event
  * @param {function} callback
  */
@@ -26,6 +26,23 @@ export function on(target, event, callback) {
   target.addEventListener(event, callback)
 }
 
+/**
+ *
+ * @param {Window | Document | HTMLElement} target
+ * @param {string} event
+ * @param {function} callback
+ */
+export function off(target, event, callback) {
+  target.removeEventListener(event, callback)
+}
+
+/**
+ *
+ * @param {Window | Document | HTMLElement} target
+ * @param {string} selector
+ * @param {string} event
+ * @param {function} callback
+ */
 export function delegate(target, selector, event, callback) {
   function dispatchEvent(e) {
     const targetElement = e.target.closest(selector)
@@ -36,4 +53,9 @@ export function delegate(target, selector, event, callback) {
     }
   }
   on(target, event, dispatchEvent)
+
+  return () => {
+    console.log("called")
+    off(target, event, dispatchEvent)
+  }
 }

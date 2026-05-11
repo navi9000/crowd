@@ -3,9 +3,10 @@ import { qs } from "../../utils/dom.js"
 import { populate } from "../../utils/templates.js"
 import { PARTICIPANT_LIST } from "./data.js"
 import { PARTICIPANT_TEMPLATE } from "./ui.js"
+import Slider from "../slider/index.js"
 
 class Participants extends ResponsiveFactory {
-  #$container = qs(".participants__list-container")
+  #parentSelector = ".participants__list-container"
   #participantList = PARTICIPANT_LIST.map(({ name, description, src }) =>
     populate(PARTICIPANT_TEMPLATE, {
       name,
@@ -13,17 +14,34 @@ class Participants extends ResponsiveFactory {
       src: src ?? "img/participant-placeholder.png",
     }),
   )
+  /**
+   * @type {Slider=}
+   */
+  #slider
 
   renderDesktop() {
-    this.#$container.innerHTML = "".concat(
-      this.#participantList[0],
-      this.#participantList[1],
-      this.#participantList[2],
-    )
+    if (this.#slider) {
+      this.#slider.unmount()
+    }
+
+    this.#slider = new Slider({
+      parentSelector: this.#parentSelector,
+      slideList: this.#participantList,
+      slidesPerView: 3,
+    })
+    this.#slider.mount()
   }
 
   renderMobile() {
-    this.#$container.innerHTML = this.#participantList[0]
+    if (this.#slider) {
+      this.#slider.unmount()
+    }
+
+    this.#slider = new Slider({
+      parentSelector: this.#parentSelector,
+      slideList: this.#participantList,
+    })
+    this.#slider.mount()
   }
 }
 

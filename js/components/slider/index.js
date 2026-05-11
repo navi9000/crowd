@@ -30,6 +30,7 @@ class Slider {
   #autoplay
   #loop
   #currentIndex
+  #eventListeners = []
 
   /**
    *
@@ -68,18 +69,19 @@ class Slider {
       navigation: populate(NAVIGATION_TEMPLATE, { result: "hi" }),
     })
 
-    delegate(
-      this.#parentElement,
-      this.#nextButtonSelector,
-      "click",
-      this.nextSlide.bind(this),
-    )
-
-    delegate(
-      this.#parentElement,
-      this.#prevButtonSelector,
-      "click",
-      this.prevSlide.bind(this),
+    this.#eventListeners.push(
+      delegate(
+        this.#parentElement,
+        this.#nextButtonSelector,
+        "click",
+        this.nextSlide.bind(this),
+      ),
+      delegate(
+        this.#parentElement,
+        this.#prevButtonSelector,
+        "click",
+        this.prevSlide.bind(this),
+      ),
     )
 
     if (!this.#loop && this.#isFirst) {
@@ -91,7 +93,10 @@ class Slider {
     }
   }
 
-  unmount() {}
+  unmount() {
+    this.#eventListeners.forEach((kill) => kill())
+    this.#parentElement.innerHTML = ""
+  }
 
   prevSlide() {
     this.#currentIndex = this.#currentIndex - 1
