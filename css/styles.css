@@ -596,3 +596,17 @@
   pointer-events: none;
   background-color: var(--color-bg-placeholder);
 }
+
+.slider {
+  width: 100%;
+  overflow: hidden;
+}
+
+.slider__slides {
+  display: grid;
+  /* transform: translateX(-40%); */
+}
+
+.slider__slide {
+  width: 100%;
+}

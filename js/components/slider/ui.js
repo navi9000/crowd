@@ -1,6 +1,4 @@
-class Templates {
-  static Navigation() {
-    return `<div class="navigation">
+export const NAVIGATION_TEMPLATE = `<div class="navigation">
       <button class="navigation__button navigation__button_prev">
         <img class="navigation__arrow" src="img/arrow.svg" alt="arrow" />
       </button>
@@ -9,7 +7,12 @@ class Templates {
         <img class="navigation__arrow" src="img/arrow.svg" alt="arrow" />
       </button>
     </div>`
-  }
-}
 
-export default Templates
+export const SLIDER_SLIDE_TEMPLATE = `<div class="slider__slide">{{content}}</div>`
+
+export const SLIDER_TEMPLATE = `<div class="slider">
+  <div class="slider__slides" style="{{wrapperStyles}}">
+    {{content}}
+  </div>
+  {{navigation}}
+</div>`
