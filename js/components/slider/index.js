@@ -50,7 +50,7 @@ class Slider {
       content: this.#slideList.map((content) =>
         populate(SLIDER_SLIDE_TEMPLATE, { content }),
       ),
-      wrapperStyles: `width: calc(${100 * this.#slideList.length}% + ${this.#slideGap}px);
+      wrapperStyles: `width: calc(${100 * this.#slideList.length}% + ${this.#slideGap * (this.#slideList.length - 1)}px);
       grid-template-columns: repeat(${this.#slideList.length}, minmax(0, 1fr));
       gap: ${this.#slideGap}px`,
       navigation: populate(NAVIGATION_TEMPLATE, { result: "hi" }),

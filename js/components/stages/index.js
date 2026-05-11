@@ -45,6 +45,7 @@ class Stages extends ResponsiveFactory {
           items: this.#stageList[6],
         }),
       ],
+      slideGap: 20,
     })
 
     slider.mount()
