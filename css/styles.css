@@ -586,10 +586,17 @@
   border: none;
   background-color: var(--color-text-primary);
   transition: 300ms;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .navigation__button:hover {
   background-color: var(--color-bg-warning);
+}
+
+.navigation__button_prev {
+  scale: -1 1;
 }
 
 .navigation__button_disabled {
