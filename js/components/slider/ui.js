@@ -21,3 +21,9 @@ export const NAVIGATION_VALUE_NUMERICAL = `<div class="navigation__result naviga
   <span class="navigation__value">{{value}}</span><span class="navigation__slash">/</span><span class="navigation__total">{{total}}</span>
 </div>
 `
+
+export const NAVIGATION_VALUE_DOTS = `<div class="navigation__result navigation__result_dots">
+  {{dots}}
+</div>`
+
+export const NAVIGATION_DOT = `<div class="navigation__dot {{active}}"></div>`

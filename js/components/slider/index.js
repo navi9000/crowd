@@ -2,18 +2,20 @@
  * @typedef {Object} SliderParams
  * @property {string} parentSelector
  * @property {[string]} slideList
+ * @property {"numerical" | "dots"} navigationDisplay
  * @property {number=} slidesPerView
  * @property {number=} slideGap
  * @property {boolean=} autoplay
  * @property {boolean=} loop
  * @property {number=} firstElementIndex
-
  */
 
 import { delegate, qs } from "../../utils/dom.js"
 import { populate } from "../../utils/templates.js"
 import {
+  NAVIGATION_DOT,
   NAVIGATION_TEMPLATE,
+  NAVIGATION_VALUE_DOTS,
   NAVIGATION_VALUE_NUMERICAL,
   SLIDER_SLIDE_TEMPLATE,
   SLIDER_TEMPLATE,
@@ -25,8 +27,10 @@ class Slider {
   #prevButtonSelector
   #nextButtonSelector
   #valueSelector
+  #navigationResultSelector
   #slideList
   #length
+  #navigationDisplay
   #slidesPerView
   #slideGap
   #autoplay
@@ -42,6 +46,7 @@ class Slider {
   constructor({
     parentSelector,
     slideList,
+    navigationDisplay,
     slidesPerView = 1,
     slideGap = 0,
     autoplay = false,
@@ -53,8 +58,10 @@ class Slider {
     this.#prevButtonSelector = ".navigation__button_prev"
     this.#nextButtonSelector = ".navigation__button_next"
     this.#valueSelector = ".navigation__value"
+    this.#navigationResultSelector = ".navigation__result"
     this.#slideList = slideList
     this.#length = this.#slideList.length
+    this.#navigationDisplay = navigationDisplay
     this.#slidesPerView = slidesPerView
     this.#slideGap = slideGap
     this.#autoplay = autoplay
@@ -71,10 +78,22 @@ class Slider {
       grid-template-columns: repeat(${this.#length}, minmax(0, 1fr));
       gap: ${this.#slideGap}px`,
       navigation: populate(NAVIGATION_TEMPLATE, {
-        result: populate(NAVIGATION_VALUE_NUMERICAL, {
-          value: (this.#currentIndex + 1).toString(),
-          total: this.#length.toString(),
-        }),
+        result:
+          this.#navigationDisplay === "numerical"
+            ? populate(NAVIGATION_VALUE_NUMERICAL, {
+                value: (this.#currentIndex + 1).toString(),
+                total: this.#length.toString(),
+              })
+            : populate(NAVIGATION_VALUE_DOTS, {
+                dots: Array.from({ length: this.#length }, (_, index) =>
+                  populate(NAVIGATION_DOT, {
+                    active:
+                      index === this.#currentIndex
+                        ? "navigation__dot_active"
+                        : "",
+                  }),
+                ),
+              }),
       }),
     })
 
@@ -187,8 +206,20 @@ class Slider {
   }
 
   #repaintValue() {
-    qs(`${this.#parentSelector} ${this.#valueSelector}`).innerHTML =
-      this.#currentIndex + 1
+    if (this.#navigationDisplay === "numerical") {
+      qs(`${this.#parentSelector} ${this.#valueSelector}`).innerHTML =
+        this.#currentIndex + 1
+    }
+
+    if (this.#navigationDisplay === "dots") {
+      qs(
+        `${this.#parentSelector} ${this.#navigationResultSelector}`,
+      ).innerHTML = Array.from({ length: this.#length }, (_, index) =>
+        populate(NAVIGATION_DOT, {
+          active: index === this.#currentIndex ? "navigation__dot_active" : "",
+        }),
+      ).join("")
+    }
   }
 
   #reposition() {

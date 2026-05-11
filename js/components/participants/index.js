@@ -27,6 +27,7 @@ class Participants extends ResponsiveFactory {
     this.#slider = new Slider({
       parentSelector: this.#parentSelector,
       slideList: this.#participantList,
+      navigationDisplay: "numerical",
       slidesPerView: 4,
       autoplay: true,
     })
@@ -41,6 +42,7 @@ class Participants extends ResponsiveFactory {
     this.#slider = new Slider({
       parentSelector: this.#parentSelector,
       slideList: this.#participantList,
+      navigationDisplay: "numerical",
     })
     this.#slider.mount()
   }

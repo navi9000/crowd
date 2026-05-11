@@ -50,6 +50,7 @@ class Stages extends ResponsiveFactory {
         }),
       ],
       slideGap: 20,
+      navigationDisplay: "dots",
     })
 
     this.#slider.mount()
