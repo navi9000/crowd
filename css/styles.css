@@ -19,17 +19,21 @@
 }
 
 .top {
+  --top-city-img-aspect-ratio: 2.743;
   position: relative;
   overflow: hidden;
   background: var(--color-bg-theme);
+  background-size: var(--top-city-img-width)
+    calc(var(--top-city-img-width) / var(--top-city-img-aspect-ratio));
   @media (orientation: portrait) {
-    background-image: url("/img/city.png");
-    background-position: right 25% bottom;
-    background-size: contain;
+    --top-city-img-width: 860px;
+    background-image: url("/img/top-bg-mobile.png");
+    background-position: center bottom;
     background-repeat: no-repeat;
-    background-size: 860px 350px;
+    background-size: contain;
   }
   @media (orientation: landscape) {
+    --top-city-img-width: 1920px;
     background-image: url("/img/city.png");
     background-position: center bottom;
     background-size: contain;
@@ -89,7 +93,7 @@
   font-size: clamp(1px, 9.7vw, 9.7vw);
   line-height: 111%;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.01em;
   display: grid;
   grid-template-columns: 1fr;
 
@@ -112,7 +116,7 @@
   font-size: 18px;
   line-height: 127%;
   margin-top: 24px;
-  margin-bottom: 32px;
+  margin-bottom: 30px;
   @media (orientation: landscape) {
     text-align: center;
     margin-bottom: 40px;
@@ -122,7 +126,7 @@
 .top__button-container {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 12px;
+  gap: 14px;
   @media (orientation: landscape) {
     grid-template-columns: repeat(2, 1fr);
     justify-self: stretch;
@@ -131,13 +135,14 @@
 
 .top__button {
   border-radius: 66px;
-  padding: 14px;
+  padding: 13px;
   border-style: solid;
   border-width: 2px;
   width: 100%;
   text-align: center;
   font-weight: 500;
   display: block;
+  line-height: 111%;
   @media (min-width: 768px) {
     padding: 14px 45px;
     line-height: 126%;
@@ -161,10 +166,11 @@
 
 .top__button_secondary {
   background-color: var(--color-bg-light);
-  border-color: var(--color-bg-dark);
+  border-color: var(--color-bg-light);
 
   @media (min-width: 768px) {
     background-color: transparent;
+    border-color: var(--color-bg-dark);
   }
 }
 
