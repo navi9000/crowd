@@ -49,6 +49,7 @@
   background-position: top 0 left 0;
   background-repeat: no-repeat;
   mix-blend-mode: color-burn;
+  pointer-events: none;
   @media (orientation: portrait) {
     background-image: url("/img/top-bg-texture-mobile.png");
   }
@@ -60,17 +61,25 @@
 .top__container {
   padding-top: 18px;
   min-height: 100vh;
+  @media (min-width: 768px) {
+    padding-top: 26px;
+  }
 }
 
 .top__logo {
   width: 213px;
   height: auto;
+  z-index: 1;
+  @media (min-width: 768px) {
+    width: 245px;
+  }
 }
 
 .top__content {
   margin-top: 37px;
   @media (min-width: 768px) {
     max-width: 542px;
+    margin-top: 57px;
   }
 }
 
@@ -86,6 +95,7 @@
 
   @media (orientation: landscape) {
     font-size: 60px;
+    letter-spacing: -0.015em;
   }
 }
 
@@ -103,6 +113,10 @@
   line-height: 127%;
   margin-top: 24px;
   margin-bottom: 32px;
+  @media (orientation: landscape) {
+    text-align: center;
+    margin-bottom: 40px;
+  }
 }
 
 .top__button-container {
@@ -118,12 +132,17 @@
 .top__button {
   border-radius: 66px;
   padding: 14px;
-  border-style: bold;
-  border-width: 1px;
+  border-style: solid;
+  border-width: 2px;
   width: 100%;
   text-align: center;
   font-weight: 500;
   display: block;
+  @media (min-width: 768px) {
+    padding: 14px 45px;
+    line-height: 126%;
+    transition: 300ms;
+  }
 }
 
 .top__button_primary {
@@ -132,25 +151,28 @@
   color: var(--color-text-secondary);
 }
 
+.top__button_primary:hover {
+  @media (min-width: 768px) {
+    background-color: var(--color-bg-warning);
+    border-color: var(--color-bg-warning);
+    color: var(--color-text-primary);
+  }
+}
+
 .top__button_secondary {
   background-color: var(--color-bg-light);
   border-color: var(--color-bg-dark);
-  /* opacity: 0.9; */
+
+  @media (min-width: 768px) {
+    background-color: transparent;
+  }
 }
 
-.top__city-img {
-  display: none;
+.top__button_secondary:hover {
   @media (min-width: 768px) {
-    display: initial;
-    /* background-image: url("/img/city.png");
-    background-position: center bottom;
-    background-size: contain;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 1920px;
-    height: 700px; */
+    background-color: var(--color-bg-dark);
+    border-color: var(--color-bg-dark);
+    color: var(--color-text-secondary);
   }
 }
 
