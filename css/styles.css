@@ -552,16 +552,35 @@
   aspect-ratio: 1.7;
   top: -132px;
   left: 50%;
-  transform: translateX(-47%) rotate(-3deg);
+  rotate: -3deg;
   z-index: 1;
+  animation: plane 3s alternate infinite ease-in-out;
 
   @media (min-width: 768px) {
     width: 400px;
     top: unset;
     left: unset;
-    transform: unset;
     bottom: -3px;
     right: -62px;
+    animation: plane_desktop 3s alternate infinite ease-in-out;
+  }
+}
+
+@keyframes plane {
+  from {
+    translate: -47% -10px;
+  }
+  to {
+    translate: -47% 10px;
+  }
+}
+
+@keyframes plane_desktop {
+  from {
+    translate: 0 -10px;
+  }
+  to {
+    translate: 0 10px;
   }
 }
 
