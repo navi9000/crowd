@@ -19,26 +19,21 @@
 }
 
 .top {
-  --top-city-img-aspect-ratio: 2.743;
   position: relative;
   overflow: hidden;
   background: var(--color-bg-theme);
-  background-size: var(--top-city-img-width)
-    calc(var(--top-city-img-width) / var(--top-city-img-aspect-ratio));
   @media (orientation: portrait) {
-    --top-city-img-width: 860px;
     background-image: url("/img/top-bg-mobile.png");
     background-position: center bottom;
     background-repeat: no-repeat;
     background-size: contain;
   }
   @media (orientation: landscape) {
-    --top-city-img-width: 1920px;
     background-image: url("/img/city.png");
-    background-position: center bottom;
-    background-size: contain;
+    background-position: center top;
+    background-size: cover;
     background-repeat: no-repeat;
-    background-size: 1920px 700px;
+    background-size: calc(100vh * 2.743) 100vh;
   }
 }
 
