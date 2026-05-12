@@ -28,8 +28,9 @@ class Participants extends ResponsiveFactory {
       parentSelector: this.#parentSelector,
       slideList: this.#participantList,
       navigationDisplay: "numerical",
-      slidesPerView: 4,
-      autoplay: true,
+      slidesPerView: 3,
+      // autoplay: true,
+      slideGap: 20,
     })
     this.#slider.mount()
   }

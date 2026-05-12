@@ -11,8 +11,10 @@ export const NAVIGATION_TEMPLATE = `<div class="navigation">
 export const SLIDER_SLIDE_TEMPLATE = `<div class="slider__slide">{{content}}</div>`
 
 export const SLIDER_TEMPLATE = `<div class="slider">
-  <div class="slider__slides" style="{{wrapperStyles}}">
-    {{content}}
+  <div class="slider__wrapper">
+    <div class="slider__slides" style="{{wrapperStyles}}">
+      {{content}}
+    </div>
   </div>
   {{navigation}}
 </div>`

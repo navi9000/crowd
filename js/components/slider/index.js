@@ -74,7 +74,7 @@ class Slider {
       content: this.#slideList.map((content) =>
         populate(SLIDER_SLIDE_TEMPLATE, { content }),
       ),
-      wrapperStyles: `width: calc(${(100 * this.#length) / this.#slidesPerView}% + ${this.#slideGap * (this.#length - 1)}px);
+      wrapperStyles: `width: calc(${(100 * this.#length) / this.#slidesPerView}% + ${(this.#slideGap * (this.#length - 1)) / this.#slidesPerView}px);
       grid-template-columns: repeat(${this.#length}, minmax(0, 1fr));
       gap: ${this.#slideGap}px`,
       navigation: populate(NAVIGATION_TEMPLATE, {
