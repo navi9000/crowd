@@ -530,6 +530,7 @@
   padding-block: 78px;
   background-color: var(--color-bg-theme);
   position: relative;
+  overflow: hidden;
   @media (min-width: 768px) {
     padding-block: 100px;
   }
