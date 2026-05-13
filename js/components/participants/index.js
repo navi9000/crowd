@@ -11,7 +11,7 @@ class Participants extends ResponsiveFactory {
     populate(PARTICIPANT_TEMPLATE, {
       name,
       description,
-      src: src ?? "img/participant-placeholder.png",
+      src: src ?? "img/participant-placeholder.webp",
     }),
   )
   /**

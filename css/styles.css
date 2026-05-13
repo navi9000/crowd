@@ -23,13 +23,13 @@
   overflow: hidden;
   background: var(--color-bg-theme);
   @media (orientation: portrait) {
-    background-image: url("/img/top-bg-mobile.png");
+    background-image: url("/img/top-bg-mobile.webp");
     background-position: center bottom;
     background-repeat: no-repeat;
     background-size: 100vw calc(100vw * 822 / 750);
   }
   @media (orientation: landscape) {
-    background-image: url("/img/city.png");
+    background-image: url("/img/city.webp");
     background-position: center top;
     background-size: cover;
     background-repeat: no-repeat;
@@ -50,10 +50,10 @@
   mix-blend-mode: color-burn;
   pointer-events: none;
   @media (orientation: portrait) {
-    background-image: url("/img/top-bg-texture-mobile.png");
+    background-image: url("/img/top-bg-texture-mobile.webp");
   }
   @media (orientation: landscape) {
-    background-image: url("/img/top-bg-texture.png");
+    background-image: url("/img/top-bg-texture.webp");
   }
 }
 
@@ -345,7 +345,7 @@
 
 .introduction__second-image-container {
   margin-top: 55px;
-  mask-image: url("/img/collage.png");
+  mask-image: url("/img/collage.webp");
   mask-size: 100%;
   scale: 1.12;
   max-width: 440px;
@@ -365,7 +365,7 @@
 
 .introduction__collage {
   background-image:
-    url("/img/top-bg-texture-mobile.png"), url("/img/collage.png");
+    url("/img/top-bg-texture-mobile.webp"), url("/img/collage.webp");
   background-blend-mode: color-burn;
   background-size: auto, 100%;
   background-repeat: repeat, no-repeat;
@@ -546,7 +546,7 @@
   position: absolute;
   content: "";
   pointer-events: none;
-  background-image: url("/img/plane.png");
+  background-image: url("/img/plane.webp");
   background-size: contain;
   width: 335px;
   aspect-ratio: 1.7;
@@ -769,7 +769,7 @@
 
 .stage-card {
   background: var(--color-bg-theme);
-  background-image: url("/img/top-bg-texture-mobile.png");
+  background-image: url("/img/top-bg-texture-mobile.webp");
   background-blend-mode: color-burn;
   padding: 62px 20px 20px;
   height: 100%;
