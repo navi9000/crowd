@@ -1,3 +1,5 @@
+import imageLoader from "./imageLoader.js"
+
 class ResponsiveFactory {
   /**
    *
@@ -8,7 +10,9 @@ class ResponsiveFactory {
   }
 
   #render({ isLargeScreen }) {
+    imageLoader.unmount()
     isLargeScreen ? this.renderDesktop() : this.renderMobile()
+    imageLoader.mount()
   }
 
   renderMobile() {}

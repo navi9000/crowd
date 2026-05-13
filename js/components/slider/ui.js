@@ -1,10 +1,10 @@
 export const NAVIGATION_TEMPLATE = `<div class="navigation">
       <button class="navigation__button navigation__button_prev">
-        <img class="navigation__arrow" src="img/arrow.svg" alt="arrow" />
+        <img class="navigation__arrow" src="img/image_placeholder.png"  data-src="img/arrow.svg" alt="arrow" />
       </button>
       {{result}}
       <button class="navigation__button navigation__button_next">
-        <img class="navigation__arrow" src="img/arrow.svg" alt="arrow" />
+        <img class="navigation__arrow" src="img/image_placeholder.png" data-src="img/arrow.svg" alt="arrow" />
       </button>
     </div>`
 

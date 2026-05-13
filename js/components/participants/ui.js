@@ -1,6 +1,6 @@
 export const PARTICIPANT_TEMPLATE = `<article class="participant">
         <div class="participant__img-container">
-            <img src="{{src}}" alt="participant" class="participant__img" />
+            <img src="img/image_placeholder.png" data-src="{{src}}" alt="participant" class="participant__img" />
         </div>
         <div class="participant__text-container">
             <h3 class="participant__name">{{name}}</h3>
