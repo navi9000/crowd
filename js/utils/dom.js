@@ -55,7 +55,6 @@ export function delegate(target, selector, event, callback) {
   on(target, event, dispatchEvent)
 
   return () => {
-    console.log("called")
     off(target, event, dispatchEvent)
   }
 }

@@ -4,6 +4,7 @@ class ResponsiveFactory {
   /**
    *
    * @param {import ("./query.js").default} query
+   * @param {import ("./imageLoader.js").default} imageLoader
    */
   constructor(query) {
     query.add(this.#render.bind(this))
