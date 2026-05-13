@@ -28,8 +28,6 @@ class ImageLoader {
               this.#loadImages(element)
               observer.unobserve(element)
             })
-            // this.#loadImages(item.target)
-            // observer.unobserve(item.target)
           }
         })
       })
